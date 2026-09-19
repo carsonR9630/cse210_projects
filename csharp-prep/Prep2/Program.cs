@@ -6,30 +6,34 @@ class Program
     {
         Console.Write("What is your grade percentage? ");
         string valueInText = Console.ReadLine();
+        string letter = "";
 
         // Converts the string to an integer
         int percentage = int.Parse(valueInText);
 
         if (percentage >= 90)
         {
-            Console.WriteLine("You received an A");
+            letter = "A";
         }
         else if (percentage >= 80)
         {
-            Console.WriteLine("You received a B");
+            letter = "B";
         }
         else if (percentage >= 70)
         {
-            Console.WriteLine("You received a C");
+            letter = "C";
         }
         else if (percentage >= 60)
         {
-            Console.WriteLine("You received a D");
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("You received an F");
+            letter = "F";
         }
+        
+        // Grade received
+        Console.WriteLine($"Your letter grade is {letter}");
 
         // if else statements to determine if course was passed
         if (percentage >= 70)
