@@ -10,27 +10,28 @@ class Program
         Console.Write("What is the magic number? ");
         userMagicNumber = Console.ReadLine();
 
-        // get user's guess
-        Console.Write("What is your guess? ");
-        userGuessNumber = Console.ReadLine();
-
         // convert from string to integer
         int magicNumber = int.Parse(userMagicNumber);
-        int guessNumber = int.Parse(userGuessNumber);
+        int guessNumber = 0;
 
-        // determine if its higher, lower, or equal
-        if (magicNumber > guessNumber)
+        do
         {
-            Console.WriteLine("Higher");
-        }
-        else if (magicNumber < guessNumber)
-        {
-            Console.WriteLine("Lower");
-        }
-        else
-        {
-            Console.WriteLine("You guessed it!");
-        }
+            // get user's guess
+            Console.Write("What is your guess? ");
+            userGuessNumber = Console.ReadLine();     
+            guessNumber = int.Parse(userGuessNumber);
+            if (magicNumber > guessNumber)
+            {
+                Console.WriteLine("Higher");
+            }
+            else if ( magicNumber < guessNumber)
+            {
+                Console.WriteLine("Lower");
+            }
+
+        } while (magicNumber != guessNumber);
+        Console.WriteLine("You guessed it!");
+
 
     }
 }
