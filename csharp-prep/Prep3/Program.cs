@@ -12,6 +12,7 @@ class Program
         // get magic number
         Random randomGenerator = new Random();
         int magicNumber = randomGenerator.Next(1, 100);
+        // start game
         Console.WriteLine("The magic number is between 1 and 100.");
 
         do
