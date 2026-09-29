@@ -17,5 +17,11 @@ class Program
         job2._startYear = 2010;
         job2._endYear = 2016;
         job2.DisplayJobDetails();
+
+        Resume myResume = new Resume();
+        myResume._name = "George Smith";
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
+        Console.WriteLine(myResume._jobs[0]._jobTitle);
     }
 }
