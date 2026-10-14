@@ -29,8 +29,25 @@ class Program
             {
                 journal.DisplayEntry();
             }
+            else if (userNumber == 3)
+            {
+                journal.LoadJournal();
+            }
+            else if (userNumber == 4)
+            {
+                journal.SaveEntry();
+            }
+            else if (userNumber == 5)
+            {
+                // This ends the loop
+            }
+            else
+            {
+                Console.WriteLine("That's not an option, try again");
+                Console.WriteLine(" ");
+            }
 
         } while(userNumber != 5);
-        
+        // I made there be the ability to make your own prompts along with having preset ones I made because sometimes a user might want to answer their own prompt
     }
 }
