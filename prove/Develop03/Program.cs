@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        Scripture scripture = new Scripture();
+        Console.WriteLine("Welcome to the Scripture memorization Program!");
+        scripture.LoadScripture();
+        scripture.Display();
+
     }
 }
