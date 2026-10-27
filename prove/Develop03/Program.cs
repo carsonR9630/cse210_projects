@@ -4,23 +4,30 @@ class Program
 {
     static void Main(string[] args)
     {
-        string userInput;
-        Scripture scripture = new Scripture();
-        Console.WriteLine("Welcome to the Scripture memorization Program!");
-        scripture.LoadScripture();
+        string userInput1;
         do
         {
-            Console.Clear();
-            scripture.Display();
-            userInput = Console.ReadLine();
-            if (userInput == "")
+            string userInput2;
+            Scripture scripture = new Scripture();
+            Console.WriteLine("Welcome to the Scripture memorization Program!");
+            scripture.LoadScripture();
+            do
             {
-                for (int i = 0; i < 3; i++)
+                Console.Clear();
+                scripture.Display();
+                Console.WriteLine("");
+                Console.Write("Press enter to continue or type 'quit' to finish: ");
+                userInput2 = Console.ReadLine();
+                if (userInput2 == "")
                 {
-                    scripture.RandomChoice();
+                    for (int i = 0; i < 3; i++)
+                    {
+                        scripture.RandomChoice();
+                    }
                 }
-            }
-        } while (userInput != "quit");
-
+            } while (userInput2 != "quit");
+            Console.WriteLine("Would you like to try another scripture? (press enter if yes or type 'end' if you would like to end the program)");
+            userInput1 = Console.ReadLine();
+        } while(userInput1 != "end");
     }
 }

@@ -28,6 +28,7 @@ public class Scripture
         }
         // add more scriptures later
         string[] lines = System.IO.File.ReadAllLines(scriptureName);
+        _words.Clear();
         string book = lines[0];
         string chapter = lines[1];
         string text = "";
@@ -54,6 +55,18 @@ public class Scripture
     }
     public void RandomChoice()
     {
+        bool allHidden = true;
+        foreach(Word word in _words)
+        {
+            if (!word.IsHidden())
+            {
+                allHidden = false;
+            }
+        }
+        if (allHidden)
+        {
+            return;
+        }
         // randomly chooses which word will be hidden next
         Random randomGenerator = new Random();
         int randomWord = 0;
