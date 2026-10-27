@@ -9,6 +9,10 @@ public class Word
         _text = text;
     }
     // behavior
+    public bool IsHidden()
+    {
+        return _isHidden;
+    }
     public void Hide()
     {
         // will set _isHidden to true
@@ -19,7 +23,7 @@ public class Word
         // returns the underscore if the word should be hidden
         if (_isHidden == true)
         {
-            return "______";
+            return "______ ";
         }
         else
         {

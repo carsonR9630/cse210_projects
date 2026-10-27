@@ -56,7 +56,11 @@ public class Scripture
     {
         // randomly chooses which word will be hidden next
         Random randomGenerator = new Random();
-        int randomWord = randomGenerator.Next(_words.Count);
+        int randomWord = 0;
+        while (_words[randomWord].IsHidden())
+        {
+            randomWord = randomGenerator.Next(_words.Count);
+        }
         _words[randomWord].Hide();
 
     }
