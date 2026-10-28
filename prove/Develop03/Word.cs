@@ -4,11 +4,13 @@ public class Word
     // attributes
     private string _text = "";
     private bool _isHidden = false;
+    // made a Word constructor for use in Scripture in order to have access to text
     public Word(string text)
     {
         _text = text;
     }
     // behavior
+    // made another behavior to check if a word is hidden
     public bool IsHidden()
     {
         return _isHidden;
