@@ -5,7 +5,7 @@ public class ListingActivity : Activity
     private List<string>_responses = new List<string>();
     // _responses will hold user responses so they can be counted
 
-    // behavior
+    // behaviors
     public ListingActivity() : base("Listing Activity", 
     "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.")
     {
@@ -13,7 +13,7 @@ public class ListingActivity : Activity
     }
     public void GetRandomPrompt()
     {
-        // will get a random prompt from the _prompts list and display it
+        // gets a random prompt from the _prompts list and displays it
         _prompts.Add("Who are some of your personal heroes?");
         _prompts.Add("What are some ways you've seen God's hand in your life this week?");
         _prompts.Add("What are you most grateful for?");
@@ -30,7 +30,7 @@ public class ListingActivity : Activity
     }
     public void GetResponses(int seconds)
     {
-        // will recieve user input responses into the _response list and display the number of responses for the user to see
+        // recieves user input responses into the _response list and displays the number of responses for the user to see
         string response;
         Console.Write("You may begin in: ");
         for (int i = 5; i > 0; i--)

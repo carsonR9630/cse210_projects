@@ -19,7 +19,7 @@ public class Activity
 
     public int GetDuration()
     {
-        // will get the duration from the user for use elsewhere in the project
+        // gets the duration from the user for use elsewhere in the project
         Console.Write("How long, in seconds, would you like this session to be? ");
         string userResponse = Console.ReadLine();
         _duration = int.Parse(userResponse);
@@ -27,17 +27,17 @@ public class Activity
     }
     public void ShowPrologue()
     {
-        // will show the begining description of the activity the user selects
+        // shows the begining description of the activity the user selects
         Console.WriteLine($"Welcome to the {_name}.");
         Console.WriteLine("");
         Console.WriteLine(_prologue);
     }
     public void ShowSpinner(int animationRunTime)
     {
-        // will be responsible for the animations
+        // creates the animation
         List<string> animationStrings = new List<string>();
         animationStrings.Clear();
-        
+        // decided on a spining v instead of a line
         animationStrings.Add(">");
         animationStrings.Add("v");
         animationStrings.Add("<");
@@ -61,7 +61,7 @@ public class Activity
     }
     public void ShowEpilogue()
     {
-        // will show the end description for when the user finishes the activity the user selects
+        // creates the end description for when the user finishes the activity that was selected
         Console.Write("Well done!! ");
         ShowSpinner(5);
         Console.Write($"\nYou have completed another {_duration} seconds of the {_name}. ");

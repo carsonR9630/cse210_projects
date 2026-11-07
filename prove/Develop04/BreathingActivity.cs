@@ -9,6 +9,8 @@ public class BreathingActivity : Activity
     public void BreatheIn(int breatheInCount)
     {
         // The breathe in function of the breathing activity
+        // breatheInCount is set as a function variable so when it is called in Main, 
+        // it can count down to different numbers depending on what a programer wants for the breathing activity
         Console.Write("Breathe in... ");
         for (int i = breatheInCount; i > 0; i--)
         {

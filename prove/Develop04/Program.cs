@@ -4,7 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        string userChoice = "";
+        // set userChoice outside so that while condition can see it
+        string userChoice;
         do
         {
             Console.Clear();
@@ -18,6 +19,7 @@ class Program
 
             if(userChoice == "1")
             {
+                // Breathing activity
                 DateTime startTime = DateTime.Now;
                 DateTime endTime; 
                 Console.Clear();
@@ -29,6 +31,7 @@ class Program
                 Console.Write("Get ready... ");
                 BA.ShowSpinner(6);
                 Console.WriteLine("\n");
+                //setting the timer for the while loop
                 endTime = startTime.AddSeconds(breathingDuration);
                 while (DateTime.Now < endTime)
                 {
@@ -40,6 +43,7 @@ class Program
             }
             else if(userChoice == "2")
             {
+                // Reflection activity
                 Console.Clear();
                 ReflectionActivity RA = new ReflectionActivity();
                 RA.ShowPrologue();
@@ -49,6 +53,9 @@ class Program
                 Console.WriteLine("Get ready...");
                 RA.ShowSpinner(6);
                 RA.GetRandomMainPrompt();
+                // I made this change so that all my related prompts can be shown,
+                // it divides the user given duration number by the number of prompts loaded into _relatedPrompts
+                // to get the time to spend on each question and still add up to the user's time entry
                 int numberOfPrompts = RA.GetRandomRelatedPrompt();
                 RA.BeginReflectionActivity(reflectionDuration/numberOfPrompts);
                 Console.Clear();
@@ -56,6 +63,7 @@ class Program
             }
             else if(userChoice == "3")
             {
+                // Listing activity
                 Console.Clear();
                 ListingActivity LA = new ListingActivity();
                 LA.ShowPrologue();
