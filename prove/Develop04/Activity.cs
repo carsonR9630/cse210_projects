@@ -1,34 +1,70 @@
 // this is the parent class
+using System;
+
 public class Activity
 {
     // attributes
     private string _name;
-    private string _description;
+    private string _prologue;
     private int _duration;
 
     // behaviors
-    public Activity(string name, string description, int duration)
+    public Activity(string name, string prologue)
     {
         // constructor
         _name = name;
-        _description = description;
-        _duration = duration;
+        _prologue = prologue;
+
     }
+
     public int GetDuration()
     {
         // will get the duration from the user for use elsewhere in the project
-        return 0;
+        Console.Write("How long, in seconds, would you like this session to be? ");
+        string userResponse = Console.ReadLine();
+        _duration = int.Parse(userResponse);
+        return _duration;
     }
     public void ShowPrologue()
     {
         // will show the begining description of the activity the user selects
+        Console.WriteLine($"Welcome to the {_name}.");
+        Console.WriteLine("");
+        Console.WriteLine(_prologue);
     }
-    public void ShowSpinner()
+    public void ShowSpinner(int animationRunTime)
     {
-        // will be responsible for the timer animations
+        // will be responsible for the animations
+        List<string> animationStrings = new List<string>();
+        animationStrings.Clear();
+        
+        animationStrings.Add(">");
+        animationStrings.Add("v");
+        animationStrings.Add("<");
+        animationStrings.Add("^");
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(animationRunTime);
+        int i = 0;
+        while (DateTime.Now < endTime)
+        {
+            string s = animationStrings[i];
+            Console.Write(s);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+            i++;
+            if(i >= animationStrings.Count)
+            {
+                i = 0;
+            }
+        }
     }
     public void ShowEpilogue()
     {
         // will show the end description for when the user finishes the activity the user selects
+        Console.Write("Well done!! ");
+        ShowSpinner(5);
+        Console.Write($"\nYou have completed another {_duration} seconds of the {_name}. ");
+        ShowSpinner(5);
     }
 }
