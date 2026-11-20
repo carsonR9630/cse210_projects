@@ -27,4 +27,5 @@ public abstract class Goal
     // abstract functions to override in each goal type
     public abstract int RecordEvent();
     public abstract string GetStringDetails();
+    public abstract string GetSaveString();
 }

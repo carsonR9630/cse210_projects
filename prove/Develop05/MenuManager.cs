@@ -1,5 +1,5 @@
 using System.ComponentModel;
-
+using System.IO;
 public class MenuManager
 {
     // attributes
@@ -10,10 +10,47 @@ public class MenuManager
     public void SaveGoals()
     {
         // will take goals in the list and save it to a txt file in a specific format
+        Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            outputFile.WriteLine(_totalScore);
+            foreach(Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetSaveString());
+            }
+        }
+
     }
     public void LoadGoals()
     {
         // will take goals out of a txt file, and put its information back into the list
+        Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+        string[] lines = System.IO.File.ReadAllLines(fileName);
+        _totalScore = int.Parse(lines[0]);
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] parts = lines[i].Split(",");
+
+            string goalType = parts[0];
+            if (goalType == "SimpleGoal")
+            {
+                SimpleGoal s = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
+                s.SetCompleted(bool.Parse(parts[4]));
+                _goals.Add(s);
+            }
+            else if (goalType == "EternalGoal")
+            {
+                EternalGoal e = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                _goals.Add(e);
+            }
+            else if (goalType == "ChecklistGoal")
+            {
+                ChecklistGoal c = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
+                _goals.Add(c);
+            }
+        }
     }
     public void DisplayGoals()
     {

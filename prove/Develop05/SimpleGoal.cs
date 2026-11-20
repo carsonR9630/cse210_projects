@@ -6,6 +6,10 @@ public class SimpleGoal : Goal
     {
         _isCompleted = false;
     }
+    public void SetCompleted(bool completed)
+    {
+        _isCompleted = completed;
+    }
     public override int RecordEvent()
     {
         _isCompleted = true;
@@ -21,5 +25,9 @@ public class SimpleGoal : Goal
         {
             return $"[ ] {GetTitle()} ({GetDescription()})";
         }
+    }
+    public override string GetSaveString()
+    {
+        return $"SimpleGoal,{GetTitle()},{GetDescription()},{GetPoints()},{_isCompleted}";
     }
 }

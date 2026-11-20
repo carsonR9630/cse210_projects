@@ -1,6 +1,6 @@
 public class EternalGoal : Goal
 {
-    public EternalGoal(String title, string description, int points) : base(title, description, points)
+    public EternalGoal(string title, string description, int points) : base(title, description, points)
     {
         
     }
@@ -11,5 +11,9 @@ public class EternalGoal : Goal
     public override string GetStringDetails()
     {
         return $"[ ] {GetTitle()} ({GetDescription()})";
+    }
+    public override string GetSaveString()
+    {
+        return $"EternalGoal,{GetTitle()},{GetDescription()},{GetPoints()}";
     }
 }

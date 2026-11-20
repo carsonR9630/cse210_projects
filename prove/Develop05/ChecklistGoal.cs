@@ -33,4 +33,8 @@ public class ChecklistGoal : Goal
             return $"[ ] {GetTitle()} ({GetDescription()}) -- Currently completed: {_amountCompleted}/{_targetNumber}";
         }
     }
+    public override string GetSaveString()
+    {
+        return $"ChecklistGoal,{GetTitle()},{GetDescription()},{GetPoints()},{_bonusPoints},{_targetNumber},{_amountCompleted}";
+    }
 }
