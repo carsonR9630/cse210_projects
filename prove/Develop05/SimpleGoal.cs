@@ -1,19 +1,30 @@
 public class SimpleGoal : Goal
 {
-    private bool _isCompleted;
+    //attributes
+    private bool _isCompleted; // keeps track of whether SimpleGoal is completed or not
 
+    //behaviors
     public SimpleGoal(string title, string description, int points) : base(title, description, points)
     {
         _isCompleted = false;
     }
+    // Needed for when loading in a file so _isComplete can be loaded
     public void SetCompleted(bool completed)
     {
         _isCompleted = completed;
     }
     public override int RecordEvent()
     {
-        _isCompleted = true;
-        return GetPoints(); 
+        // check if the goal is completed already before giving points
+        if(_isCompleted == false)
+        {
+            _isCompleted = true;
+            return GetPoints();
+        }
+        else
+        {
+            return 0;
+        }
     }
     public override string GetStringDetails()
     {

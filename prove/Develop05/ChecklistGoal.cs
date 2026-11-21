@@ -1,25 +1,40 @@
 public class ChecklistGoal : Goal
 {
-    private int _amountCompleted;
-    private int _targetNumber;
+    // attributes
+    private int _amountCompleted; //the amount of times the user has completed parts of the whole goal
+    private int _targetNumber; //the whole goal
     private int _bonusPoints;
 
+    //behaviors
     public ChecklistGoal(string title, string description, int points, int bonusPoints, int targetNumber) : base(title, description, points)
     {
         _bonusPoints = bonusPoints;
         _amountCompleted = 0;
         _targetNumber = targetNumber;
     }
+    //I need SetAmountCompleted so that when goals are loaded from a save _amountCompleted has a place to go
+    public void SetAmountCompleted(int completed)
+    {
+        _amountCompleted = completed;
+    }
     public override int RecordEvent()
     {
-        if(_amountCompleted == _targetNumber)
+        // checking if the user has already completed the goal before giving more points
+        if(_amountCompleted >= _targetNumber)
         {
-            return GetPoints() + _bonusPoints;
+            return 0;
         }
         else
         {
             _amountCompleted++;
-            return GetPoints();
+            if(_amountCompleted == _targetNumber)
+            {
+                return GetPoints() + _bonusPoints;
+            }
+            else
+            {
+                return GetPoints();
+            }
         }
     }
     public override string GetStringDetails()

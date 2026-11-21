@@ -1,5 +1,8 @@
 public class EternalGoal : Goal
 {
+    //no attributes
+
+    //behaviors
     public EternalGoal(string title, string description, int points) : base(title, description, points)
     {
         
